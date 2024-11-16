@@ -62,6 +62,9 @@ GEN_CONFIG_FILE()
         echo "SOURCE_PRODUCT_FIRST_API_LEVEL=\"${SOURCE_PRODUCT_FIRST_API_LEVEL:?}\""
         echo "SOURCE_VNDK_VERSION=\"${SOURCE_VNDK_VERSION:?}\""
         echo "TARGET_NAME=\"${TARGET_NAME:?}\""
+        if $ROM_IS_OFFICIAL; then
+            echo "TARGET_MAINTAINER=\"${TARGET_MAINTAINER:?}\""
+        fi
         echo "TARGET_CODENAME=\"${TARGET_CODENAME:?}\""
         if [ "${#TARGET_ASSERT_MODEL[@]}" -ge 1 ]; then
             echo "TARGET_ASSERT_MODEL=\"$( IFS=:; printf '%s' "${TARGET_ASSERT_MODEL[*]}" )\""

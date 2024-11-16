@@ -58,6 +58,11 @@ PRINT_HEADER()
     echo    '");'
     echo    'ui_print("Coded by salvo_giangri @XDAforums");'
     echo    'ui_print("****************************************");'
+    if $ROM_IS_OFFICIAL; then
+        echo -n 'ui_print("'
+        echo -n "Device Maintainer: $TARGET_MAINTAINER"
+        echo    '");'
+    fi
     echo -n 'ui_print("'
     echo -n "One UI version: $ONEUI_VERSION"
     echo    '");'
