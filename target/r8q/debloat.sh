@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024 Salvo Giangreco
+# Copyright (C) 2025 Salvo Giangreco
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,13 +23,7 @@
 # Overlays
 SYSTEM_DEBLOAT+="
 system/app/WifiRROverlayAppH2E
-system/app/WifiRROverlayAppQC
 system/app/WifiRROverlayAppWifiLock
-"
-PRODUCT_DEBLOAT+="
-overlay/SoftapOverlay6GHz
-overlay/SoftapOverlayDualAp
-overlay/SoftapOverlayOWE
 "
 
 # mAFPC
@@ -37,67 +31,14 @@ SYSTEM_DEBLOAT+="
 system/bin/mafpc_write
 "
 
-# GameDriver
-SYSTEM_DEBLOAT+="
-system/priv-app/GameDriver-SM8550
-"
-
-# Camera SDK
-SYSTEM_DEBLOAT+="
-system/etc/default-permissions/default-permissions-com.samsung.android.globalpostprocmgr.xml
-system/etc/default-permissions/default-permissions-com.samsung.petservice.xml
-system/etc/default-permissions/default-permissions-com.samsung.videoscan.xml
-system/etc/permissions/privapp-permissions-com.samsung.android.globalpostprocmgr.xml
-system/etc/permissions/privapp-permissions-com.samsung.petservice.xml
-system/etc/permissions/privapp-permissions-com.samsung.videoscan.xml
-system/priv-app/GlobalPostProcMgr
-system/priv-app/PetService
-system/priv-app/VideoScan
-"
-
-# Apps debloat
-SYSTEM_DEBLOAT+="
-system/priv-app/SohService
-"
-
 # system_ext clean-up
-SYSTEM_DEBLOAT+="
-system/etc/permissions/org.carconnectivity.android.digitalkey.rangingintent.xml
-system/etc/permissions/org.carconnectivity.android.digitalkey.secureelement.xml
-"
 SYSTEM_EXT_DEBLOAT+="
-app/QCC
-bin/qccsyshal@1.2-service
-etc/init/vendor.qti.hardware.qccsyshal@1.2-service.rc
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/privapp-permissions-com.qualcomm.location.xml
 framework/com.qti.location.sdk.jar
 framework/org.carconnectivity.android.digitalkey.rangingintent.jar
 framework/org.carconnectivity.android.digitalkey.secureelement.jar
-lib/libqcc.so
-lib/libqcc_file_agent_sys.so
-lib/libqccdme.so
-lib/libqccfileservice.so
-lib/vendor.qti.hardware.qccsyshal@1.0.so
-lib/vendor.qti.hardware.qccsyshal@1.1.so
-lib/vendor.qti.hardware.qccsyshal@1.2.so
-lib/vendor.qti.hardware.qccvndhal@1.0.so
-lib/vendor.qti.hardware.trustedui@1.1.so
-lib/vendor.qti.hardware.trustedui@1.2.so
-lib/vendor.qti.qccvndhal_aidl-V1-ndk.so
-lib64/libqcc.so
-lib64/libqcc_file_agent_sys.so
-lib64/libqccdme.so
-lib64/libqccfileservice.so
-lib64/vendor.qti.hardware.qccsyshal@1.0.so
-lib64/vendor.qti.hardware.qccsyshal@1.1.so
-lib64/vendor.qti.hardware.qccsyshal@1.2-halimpl.so
-lib64/vendor.qti.hardware.qccsyshal@1.2.so
-lib64/vendor.qti.hardware.qccvndhal@1.0.so
-lib64/vendor.qti.hardware.trustedui@1.1.so
-lib64/vendor.qti.hardware.trustedui@1.2.so
-lib64/vendor.qti.qccvndhal_aidl-V1-ndk.so
 priv-app/com.qualcomm.location
 priv-app/com.qualcomm.qti.services.systemhelper
 "
