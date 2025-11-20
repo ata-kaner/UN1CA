@@ -1,0 +1,4 @@
+id=screenlock
+name=Disable screen lock backup
+author=salvogiangri,ata-kaner
+description=Disable screen lock backup support
