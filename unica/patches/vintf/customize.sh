@@ -16,4 +16,9 @@ elif [[ "$SOURCE_PLATFORM_SDK_VERSION" == "$TARGET_PLATFORM_SDK_VERSION" ]]; the
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/vintf/manifest.xml"
 fi
 
+if [ -f "$SRC_DIR/target/$TARGET_CODENAME/vintf_vendor/manifest.xml" ]; then
+    LOG "- Adding /vendor/etc/vintf/manifest.xml"
+    EVAL "cp -a \"$SRC_DIR/target/$TARGET_CODENAME/vintf_vendor/manifest.xml\" \"$WORK_DIR/vendor/etc/vintf/manifest.xml\""
+fi
+
 unset -f _LOG
