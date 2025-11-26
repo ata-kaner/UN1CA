@@ -1,0 +1,4 @@
+id=multi_nfc
+name=Multi NFC Support
+author=salvogiangri, ata-kaner
+description=Support multi nfc configuration for 5G model
