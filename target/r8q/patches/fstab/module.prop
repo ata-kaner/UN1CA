@@ -1,0 +1,4 @@
+id=fstab
+name=FSTAB mount entry patches
+author=salvogiangri, ata-kaner
+description=Change fstab mount entries

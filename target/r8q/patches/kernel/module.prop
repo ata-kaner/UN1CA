@@ -1,0 +1,4 @@
+id=kernel
+name=Custom kernel support
+author=ata-kaner
+description=Adds Custom Kernel in ROM.
