@@ -200,6 +200,7 @@ ADD_TO_WORK_DIR()
     local GROUP="$5"
     local MODE="$6"
     local LABEL="$7"
+    local DEST_NAME="$8"
 
     if [ ! -d "$SOURCE" ]; then
         if [ "$(cut -d "/" -f 2 -s <<< "$SOURCE")" ]; then
@@ -252,6 +253,10 @@ ADD_TO_WORK_DIR()
     else
         SOURCE_FILE+="/$PARTITION/$FILE"
         TARGET_FILE+="/$PARTITION/$FILE"
+    fi
+
+    if [ -n "$DEST_NAME" ]; then
+        TARGET_FILE="$(dirname "$TARGET_FILE")/$DEST_NAME"
     fi
 
     if [ ! -e "$SOURCE_FILE" ] && [ ! -L "$SOURCE_FILE" ]; then
