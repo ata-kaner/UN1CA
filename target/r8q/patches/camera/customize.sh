@@ -29,6 +29,8 @@ ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libImageTagger.camera.samsung.s
 # Upgrade midas blobs
 DELETE_FROM_WORK_DIR "vendor" "etc/midas"
 ADD_TO_WORK_DIR "a73xqxx" "vendor" "etc/midas" 0 2000 755 "u:object_r:vendor_configs_file:s0"
+ADD_TO_WORK_DIR "a36xqnaxx" "vendor" "etc/midas/SRIBMQA_aiFiQA_V100_FP32.tflite" 0 0 644 "u:object_r:vendor_configs_file:s0"
+ADD_TO_WORK_DIR "a36xqnaxx" "vendor" "etc/midas/SRIBMQA_aiIQA_V100_FP32.tflite" 0 0 644 "u:object_r:vendor_configs_file:s0"
 
 # Upgrade singletake blobs
 DELETE_FROM_WORK_DIR "vendor" "etc/singletake"
