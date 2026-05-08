@@ -38,3 +38,13 @@ ADD_TO_WORK_DIR "a73xqxx" "vendor" "etc/singletake" 0 2000 755 "u:object_r:vendo
 
 LOG "- Patching /vendor/ueventd.rc"
 EVAL "cat \"$MODPATH/ueventd.rc.diff\" >> \"$WORK_DIR/vendor/ueventd.rc\""
+
+LOG "- Fixing Ultra-Wide camera"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "ef4f40f9cfe3ffb4e60140b962f5ffd0" "ef4f40f9cfe3ffb4e6031f2a62f5ffd0"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "8d5748b90a0240b9ed0f0034ed048052" "8d5748b90a0240b9ed0f003420048052"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "5f090071c1000054880340b9f1048052" "5f090071c1000054880340b931048052"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "a4039a3cf83700f9f62700f9a1010054" "a4039a3cf83700f9f62700f90d000014"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "4802005421008052c60280523b20cc1a" "1f2003d521008052c60280523b20cc1a"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "7f03066afb6340f98001005406f0fff0" "7f03066afb6340f91f2003d506f0fff0"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "d2060014aa0100b4e10040ad23008052" "c4ffff17aa0100b4e10040ad23008052"
+HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "f56700f9bf0210ebe208005421008052" "f56700f9bf0210ebe208005401008052"
