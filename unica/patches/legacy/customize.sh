@@ -355,6 +355,38 @@ if [ "$TARGET_PLATFORM_SDK_VERSION" -lt "35" ]; then
     fi
 fi
 
+# Support OMX only devices for Camera related operations (Motion Photos & HDR10+)
+# Original Idea: https://github.com/ExtremeXT/ExtremeROM/commit/73085e3be6417eb1e93de465550aa940039ba500
+# - Shipping API 30 and higher has Codec2 HAL support
+if [[ "$TARGET_PRODUCT_SHIPPING_API_LEVEL" -lt 30 ]]; then
+        SMALI_PATCH "system" "system/priv-app/SamsungCamera/SamsungCamera.apk" \
+        "smali_classes3/com/samsung/android/sum/core/filter/DecoderFilter.smali" "replace" \
+        'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
+        'const v2, 0x7f420888' \
+        'const v2, 0x7f000789'
+        SMALI_PATCH "system" "system/priv-app/SamsungCamera/SamsungCamera.apk" \
+        "smali_classes3/com/samsung/android/sum/core/filter/EncoderFilter.smali" "replace" \
+        'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
+        'const v4, 0x7f420888' \
+        'const v4, 0x7f000789'
+
+        SMALI_PATCH "system" "system/app/MotionPhoto/MotionPhoto.apk" \
+        "smali/com/samsung/android/motionphoto/utils/v2/video/VideoTranscoder.smali" "replace" \
+        'configVideoEncoderParameters(Landroid/media/MediaFormat;Lcom/samsung/android/motionphoto/utils/v2/video/VideoTranscodingTask;)V' \
+        'const p2, 0x7f420888' \
+        'const p2, 0x7f000789'
+        SMALI_PATCH "system" "system/app/MotionPhoto/MotionPhoto.apk" \
+        "smali/com/samsung/android/sum/core/filter/DecoderFilter.smali" "replace" \
+        'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
+        'const v2, 0x7f420888' \
+        'const v2, 0x7f000789'
+        SMALI_PATCH "system" "system/app/MotionPhoto/MotionPhoto.apk" \
+        "smali/com/samsung/android/sum/core/filter/EncoderFilter.smali" "replace" \
+        'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
+        'const v4, 0x7f420888' \
+        'const v4, 0x7f000789'
+fi
+
 if ! $PATCHED; then
     LOG "\033[0;33m! Nothing to do\033[0m"
 fi
