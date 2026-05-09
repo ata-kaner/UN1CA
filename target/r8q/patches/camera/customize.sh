@@ -48,3 +48,6 @@ HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "4802005421008052c
 HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "7f03066afb6340f98001005406f0fff0" "7f03066afb6340f91f2003d506f0fff0"
 HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "d2060014aa0100b4e10040ad23008052" "c4ffff17aa0100b4e10040ad23008052"
 HEX_PATCH "$WORK_DIR/vendor/lib64/hw/com.qti.chi.override.so" "f56700f9bf0210ebe208005421008052" "f56700f9bf0210ebe208005401008052"
+
+DELETE_FROM_WORK_DIR "vendor" "saiv/image_understanding/db/aig_classifier/aig_classifier_cnn.tf"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "saiv/image_understanding/db/aig_classifier/aig_classifier_cnn.tflite" 0 2000 755 "u:object_r:vendor_configs_file:s0"
