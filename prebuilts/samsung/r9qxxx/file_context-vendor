@@ -24,3 +24,4 @@
 /vendor/lib64/libVendorSemDataProps\.so u:object_r:vendor_file:s0
 /vendor/lib64/libVendorSemTelephonyProps\.so u:object_r:vendor_file:s0
 /vendor/lib64/vendor\.samsung\.hardware\.vibrator-V3-ndk_platform\.so u:object_r:vendor_file:s0
+/vendor/saiv/image_understanding/db/aig_classifier/aig_classifier_cnn\.tflite u:object_r:vendor_file:s0
