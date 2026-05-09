@@ -1,0 +1,4 @@
+id=sdhms_sm8250
+name=SM8250 SDHMS support
+author=ata-kaner
+description=Bring back removed SM8250 support
