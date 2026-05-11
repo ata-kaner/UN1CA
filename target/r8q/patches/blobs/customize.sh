@@ -83,7 +83,7 @@ ADD_TO_WORK_DIR "r9qxxx" "vendor" "etc/vintf/manifest/vendor.samsung.hardware.vi
 ADD_TO_WORK_DIR "r9qxxx" "vendor" "lib64/vendor.samsung.hardware.vibrator-V3-ndk_platform.so" 0 0 644 "u:object_r:vendor_file:s0"
 LOG_STEP_OUT
 
-ADD_TO_WORK_DIR "a73xqxx" "vendor" "bin/hw/wpa_supplicant" 0 2000 755 "u:object_r:hal_wifi_supplicant_default_exec:s0"
+ADD_TO_WORK_DIR "a52qnsxx" "vendor" "bin/hw/wpa_supplicant" 0 2000 755 "u:object_r:hal_wifi_supplicant_default_exec:s0"
 
 LOG_STEP_IN "- Replacing Hyper configs"
 ADD_TO_WORK_DIR "$SOURCE_FIRMWARE" "vendor" "etc/hyper/config_hyper_permission.json"
