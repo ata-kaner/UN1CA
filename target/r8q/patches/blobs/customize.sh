@@ -128,6 +128,8 @@ ADD_TO_WORK_DIR "r9qxxx" "vendor" "$arch/libllvm-glnext.so" 0 0 644 "u:object_r:
 ADD_TO_WORK_DIR "r9qxxx" "vendor" "$arch/libllvm-qcom.so" 0 0 644 "u:object_r:same_process_hal_file:s0"
 done
 
+ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/libsnaplite_native.so" 0 0 644 "u:object_r:same_process_hal_file:s0"
+
 # Beginning of Product
 LOG_STEP_IN "- Adding OK Google Hotword Enrollment blobs"
 DELETE_FROM_WORK_DIR "product" "priv-app/HotwordEnrollmentOKGoogleEx4HEXAGON"
