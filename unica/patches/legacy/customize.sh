@@ -360,6 +360,8 @@ fi
 # - Shipping API 30 and higher has Codec2 HAL support
 if [ ! -f "$WORK_DIR/vendor/bin/hw/vendor.qti.media.c2@1.0-service" ] || [ ! -f "$WORK_DIR/vendor/bin/hw/samsung.hardware.media.c2@1.0-service" ]; then
         PATCHED=true
+        APPLY_PATCH "system" "system/priv-app/SamsungCamera/SamsungCamera.apk" \
+            "$MODPATH/camera/SamsungCamera.apk/0001-Return-OMX-compatible-HDR10-parameter.patch"
         SMALI_PATCH "system" "system/priv-app/SamsungCamera/SamsungCamera.apk" \
         "smali_classes3/com/samsung/android/sum/core/filter/DecoderFilter.smali" "replace" \
         'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
