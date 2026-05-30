@@ -421,6 +421,7 @@ fi
 unset KERNEL_MISSING VBOOT_MISSING
 
 if [ "$TARGET_PLATFORM_SDK_VERSION" -lt "35" ]; then
+    PATCHED=true
     LOG_STEP_IN "Adding stune cgroup nodes to init.rc"
     if ! grep -q "# Create energy-aware scheduler tuning nodes" "$WORK_DIR/system/system/etc/init/hw/init.rc"; then
         sed -i '/chmod 0664 \/dev\/stune\/audio-app\/tasks/a\
@@ -475,6 +476,25 @@ if [ "$TARGET_PLATFORM_SDK_VERSION" -lt "35" ]; then
     write /dev/stune/nnapi-hal/schedtune.boost 1\
     write /dev/stune/nnapi-hal/schedtune.prefer_idle 1' "$WORK_DIR/system/system/etc/init/hw/init.rc"
     fi
+
+    sed -i '/task_profiles ProcessCapacityHigh HighPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks' "$WORK_DIR/system/system/etc/init/audioserver.rc"
+    sed -i '/task_profiles HighPerformance ProcessCapacityHigh/a\
+    writepid /dev/stune/foreground/tasks /dev/cpuset/foreground/tasks' "$WORK_DIR/system/system/etc/init/kumihodecoder.rc"
+    sed -i '/task_profiles ProcessCapacityHigh HighPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks' "$WORK_DIR/system/system/etc/init/mediametrics.rc"
+    sed -i '/task_profiles ProcessCapacityHigh HighPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks' "$WORK_DIR/system/system/etc/init/mediaserver.rc"
+    sed -i '/task_profiles HighPerformance GpisSfCpusetJoin/a\
+    writepid /dev/stune/foreground/tasks /dev/cpuset/sf/tasks' "$WORK_DIR/system/system/etc/init/mediaserver.rc"
+    sed -i '/task_profiles ProcessCapacityHigh MaxPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/top-app/tasks' "$WORK_DIR/system/system/etc/init/hw/init.zygote32.rc"
+    sed -i '/task_profiles ProcessCapacityHigh SystemServiceCapacityHigh MaxPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/top-app/tasks' "$WORK_DIR/system/system/etc/init/hw/init.zygote64_32.rc"
+    sed -i '/task_profiles ProcessCapacityHigh SystemServiceCapacityHigh MaxPerformance/a\
+    writepid /dev/cpuset/foreground/tasks /dev/stune/top-app/tasks' "$WORK_DIR/system/system/etc/init/hw/init.zygote64.rc"
+    sed -i '/task_profiles ServiceCapacityLow HighPerformance/a\
+    writepid /dev/cpuset/system-background/tasks /dev/stune/foreground/tasks' "$WORK_DIR/system/system/system_ext/etc/init/hwservicemanager.rc"
 
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/task_profiles/cgroups_28.json" 0 0 644 "u:object_r:system_file:s0"
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/task_profiles/cgroups_29.json" 0 0 644 "u:object_r:system_file:s0"
