@@ -358,7 +358,8 @@ fi
 # Support OMX only devices for Camera related operations (Motion Photos & HDR10+)
 # Original Idea: https://github.com/ExtremeXT/ExtremeROM/commit/73085e3be6417eb1e93de465550aa940039ba500
 # - Shipping API 30 and higher has Codec2 HAL support
-if [[ "$TARGET_PRODUCT_SHIPPING_API_LEVEL" -lt 30 ]]; then
+if [ ! -f "$WORK_DIR/vendor/bin/hw/vendor.qti.media.c2@1.0-service" ] || [ ! -f "$WORK_DIR/vendor/bin/hw/samsung.hardware.media.c2@1.0-service" ]; then
+        PATCHED=true
         SMALI_PATCH "system" "system/priv-app/SamsungCamera/SamsungCamera.apk" \
         "smali_classes3/com/samsung/android/sum/core/filter/DecoderFilter.smali" "replace" \
         'configCodec(Lcom/samsung/android/sum/core/message/Message;)V' \
